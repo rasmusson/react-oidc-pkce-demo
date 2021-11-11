@@ -8,10 +8,10 @@ import {
 
 const authService = new AuthService({
     clientId: 'oidc-client',
-    authorizeEndpoint: 'http://localhost:8080/auth/realms/oidcrealm/protocol/openid-connect/auth',
-    tokenEndpoint: 'http://localhost:8080/auth/realms/oidcrealm/protocol/openid-connect/token',
-    logoutEndpoint: 'http://localhost:8080/auth/realms/oidcrealm/protocol/openid-connect/logout',
-    redirectUri: 'http://localhost:3000',
+    authorizeEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/auth',
+    tokenEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/token',
+    logoutEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/logout',
+    redirectUri: 'http://keycloak:3000',
     scopes: ['openid'],
 });
 function SecuredApp() {
