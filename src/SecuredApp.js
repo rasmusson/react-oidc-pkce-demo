@@ -11,7 +11,7 @@ const authService = new AuthService({
     authorizeEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/auth',
     tokenEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/token',
     logoutEndpoint: 'http://keycloak:8080/auth/realms/oidcrealm/protocol/openid-connect/logout',
-    redirectUri: 'http://keycloak:3000',
+    redirectUri: 'http://react:3000',
     scopes: ['openid'],
 });
 function SecuredApp() {
