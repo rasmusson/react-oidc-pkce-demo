@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Simple React app to demo OIDC PKCE
+A simple app that for initiating and showing the result of OIDC PKCE integration.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It is a good option to showcase a simple OIDC integration in demos. I use it in [my blog post](https://blog.samlsecurity.com/post/saml-for-react-spa/?utm_source=github&utm_medium=link&utm_campaign=react-oidc-pkce-demo&utm_id=react-oidc-pkce-demo&utm_content=react-oidc-pkce-demo) on integrating a React SPA against a SAML IdP using keycloak for protocol brokering. 
 
-## Available Scripts
+# Configuration
+The application is configured by editing src/SecuredApp.js and change client id, endpoints, scopes and redirectUri to match your environment
+```
+const authService = new AuthService({
+    clientId: 'oidc-client',
+    authorizeEndpoint: 'https://keycloak:8443/auth/realms/oidcrealm/protocol/openid-connect/auth',
+    tokenEndpoint: 'https://keycloak:8443/auth/realms/oidcrealm/protocol/openid-connect/token',
+    logoutEndpoint: 'https://keycloak:8443/auth/realms/oidcrealm/protocol/openid-connect/logout',
+    redirectUri: 'http://react:3000',
+    scopes: ['openid'],
+});
+```
 
-In the project directory, you can run:
+# Starting
+After configuration start the  application by running
+```npm start```
 
-### `npm start`
+# Using
+The app shows a login button to initiate the authentication. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app starts on port localhost:3000. A login button is shown and clicking it starts authentication.
+When login is successfull the content of the JWT token is displayd. Clicking the logout button will trigger a logout.
